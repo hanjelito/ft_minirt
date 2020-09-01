@@ -5,9 +5,9 @@ OBJS	= ${SRCS:.c=.o}
 NAME	= minirt.a
 CC		= cc
 RM		= rm -f
-# CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		${CC} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			make -sC ./minilibx_opengl/
@@ -17,7 +17,7 @@ ${NAME}:	${OBJS}
 			ranlib ${NAME}
 
 run:
-			@gcc -Wall -Wextra -Werror  -lmlx -framework OpenGL -framework AppKit minirt.a & ./a.out
+			@gcc  -lmlx -framework OpenGL -framework AppKit minirt.a & ./a.out
 
 all:		${NAME}
 clean:
