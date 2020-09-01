@@ -47,7 +47,7 @@ int	main(void)
 				 So, instead of having data[height][width] here you'll have the following
 				 formula : [current height * max width + current width] (as you can see below)
 				*/
-                printf("\n%d ", count_w % 5);
+                // printf("\n%d ", count_w % 5);
 				mlx.img.data[count_h * WIN_WIDTH + count_w] = 0xFFFFFF;
             }
 			else{

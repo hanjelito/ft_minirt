@@ -10,19 +10,23 @@ RM		= rm -f
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
-			make -sC ./minilibx_mms/
+			make -sC ./minilibx_opengl/
 			cp minilibx_opengl/libmlx.a .
-			mv libmlx.a.a $(NAME)
+			mv libmlx.a $(NAME)
 			ar rc  ${NAME} ${OBJS}
 			ranlib ${NAME}
+
+run:
+			@gcc -Wall -Wextra -Werror  -lmlx -framework OpenGL -framework AppKit minirt.a & ./a.out
 
 all:		${NAME}
 clean:
 			${RM} ${OBJS}
+			${RM} ${NAME}
 			make -sC ./minilibx_opengl/ clean
+			
 fclean:		clean
 			${RM} ${NAME}
-			make -sC ./minilibx_opengl/ fclean
 
 re:			fclean all
 
